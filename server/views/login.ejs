@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hello</h1>
+    <button onclick="login()">Login</button>
+</body>
+<script>
+    const email='mailsds7@mail.com'
+    const password='psd12222'
+    const login=  async()=> {
+        const res= await fetch("/login",{
+      method:'POST',
+      body:JSON.stringify({
+        email,password
+      }),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    });
+    const data=await res.json();
+    console.log(data);
+    if(data.errors){
+    console.log(data.errors);
+    }
+    if(data.user){
+      console.log(data.user)
+    }     
+    }
+
+</script>
+</html>
